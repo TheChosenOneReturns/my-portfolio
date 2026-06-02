@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { useInView } from "@/hooks/use-in-view"
 import { Code2, GraduationCap, Brain, Rocket } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
@@ -39,15 +40,7 @@ export function BioSection() {
       description: language === "es"
         ? "Expansión hacia inteligencia artificial y computación en la nube. Dominio de herramientas modernas de MLOps, automatización y contenedorización."
         : "Expansion into artificial intelligence and cloud computing. Mastery of modern MLOps, automation, and containerization tools.",
-      technologies: [
-        "Python (Pandas, NumPy)",
-        "n8n",
-        "AWS",
-        "MongoDB",
-        "Docker",
-        "GitHub Actions",
-        "CI/CD",
-      ],
+      technologies: ["Python (Pandas, NumPy)", "n8n", "AWS", "MongoDB", "Docker", "GitHub Actions", "CI/CD"],
       achievementKeys: ["bio.2024.achievements.1", "bio.2024.achievements.2", "bio.2024.achievements.3", "bio.2024.achievements.4"],
     },
     {
@@ -56,18 +49,9 @@ export function BioSection() {
       subtitleKey: "bio.2025.subtitle",
       icon: Rocket,
       description: language === "es"
-        ? "Culminación de estudios con enfoque en integración de IA en aplicaciones web. Construcción de soluciones end-to-end que combinan desarrollo full-stack con inteligencia artificial avanzada."
-        : "Culmination of studies with focus on AI integration in web applications. Building end-to-end solutions combining full-stack development with advanced artificial intelligence.",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "TailwindCSS",
-        "LangChain",
-        "OpenAI API",
-        "FastAPI",
-        "TensorFlow",
-        "MLOps",
-      ],
+        ? "Culminación de estudios con enfoque en integración de IA en aplicaciones web. Construcción de soluciones end-to-end."
+        : "Culmination of studies with focus on AI integration in web applications. Building end-to-end solutions.",
+      technologies: ["Next.js", "TypeScript", "TailwindCSS", "LangChain", "OpenAI API", "FastAPI", "TensorFlow", "MLOps"],
       achievementKeys: ["bio.2025.achievements.1", "bio.2025.achievements.2", "bio.2025.achievements.3", "bio.2025.achievements.4"],
     },
   ]
@@ -75,21 +59,22 @@ export function BioSection() {
   return (
     <section id="sobre-mi" className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-5xl mx-auto">
-        <div
-          className={`mb-20 transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-white">
             {language === "es" ? "Trayectoria" : "Trajectory"}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-            {language === "es"
-              ? "De los fundamentos del código a la integración de IA. Un camino de curiosidad constante."
-              : "From coding fundamentals to AI integration. A path of constant curiosity."}
+          <p className="text-lg md:text-xl text-white/50 max-w-2xl">
+            {language === "es" ? "De los fundamentos del código a la integración de IA." : "From coding fundamentals to AI integration."}
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative">
-          <div className="absolute left-7 md:left-8 top-0 bottom-0 w-px bg-border" />
+          <div className="absolute left-7 md:left-8 top-0 bottom-0 w-px bg-white/10" />
 
           <div className="space-y-16">
             {timeline.map((item, index) => {
@@ -97,34 +82,33 @@ export function BioSection() {
               const subtitle = item.subtitleKey.startsWith("bio.") ? t(item.subtitleKey) : item.subtitleKey
 
               return (
-                <div
+                <motion.div
                   key={index}
-                  className={`relative flex gap-6 md:gap-8 transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: index * 0.15 }}
+                  className="relative flex gap-6 md:gap-8"
                 >
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-card border border-border flex items-center justify-center">
-                      <item.icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center">
+                      <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#00f5ff]" />
                     </div>
                   </div>
 
                   <div className="flex-1 pt-1">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-sm font-mono text-primary/70 px-2.5 py-1 rounded bg-primary/5">
+                      <span className="text-sm font-mono text-[#00f5ff]/70 px-2.5 py-1 rounded bg-[#00f5ff]/5">
                         {item.year}
                       </span>
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-semibold mb-2">{title}</h3>
-                    <p className="text-base text-muted-foreground mb-2">{subtitle}</p>
-                    <p className="text-base text-foreground/70 leading-relaxed mb-5">{item.description}</p>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2 text-white">{title}</h3>
+                    <p className="text-base text-white/50 mb-2">{subtitle}</p>
+                    <p className="text-base text-white/60 leading-relaxed mb-5">{item.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-5">
                       {item.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1.5 rounded-full text-sm font-mono bg-secondary/30 border border-border/30 text-muted-foreground"
-                        >
+                        <span key={tech} className="px-3 py-1.5 rounded-full text-sm font-mono bg-white/[0.03] border border-white/10 text-white/50">
                           {tech}
                         </span>
                       ))}
@@ -132,14 +116,14 @@ export function BioSection() {
 
                     <ul className="space-y-2">
                       {item.achievementKeys.map((key, i) => (
-                        <li key={i} className="flex items-start gap-3 text-base text-foreground/60">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-2 flex-shrink-0" />
+                        <li key={i} className="flex items-start gap-3 text-base text-white/50">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#00f5ff]/50 mt-2 flex-shrink-0" />
                           {t(key)}
                         </li>
                       ))}
                     </ul>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>

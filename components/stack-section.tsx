@@ -1,9 +1,9 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { useInView } from "@/hooks/use-in-view"
 import { useLanguage } from "@/lib/language-context"
 
-// Tech icons
 const siPython = "M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09z"
 const siN8N = "M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.5 14.5h-9v-1h9v1zm0-3h-9v-1h9v1zm0-3h-9v-1h9v1zm-2-4h-5V5h5v1.5z"
 const siOpenai = "M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855l-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"
@@ -56,24 +56,28 @@ export function StackSection() {
   return (
     <section id="stack" className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-6xl mx-auto">
-        <div
-          className={`mb-16 transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5">Stack</h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-            Herramientas que uso con frecuencia, organizadas por honestidad: lo que ya puse en producción, lo que uso en proyectos personales, y lo que estoy aprendiendo activamente.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5 text-white">Stack</h2>
+          <p className="text-lg md:text-xl text-white/50 max-w-2xl">
+            Herramientas que uso con frecuencia, organizadas por honestidad.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {categories.map((category, index) => (
-            <div
+            <motion.div
               key={category.titleKey}
-              className={`transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
             >
-              <div className="rounded-2xl border border-border/40 bg-card/40 p-8 h-full hover:border-primary/40 transition-all duration-300 bloom-sm hover:bloom-md">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-8">
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 h-full hover:border-[#00f5ff]/30 transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,245,255,0.08)]">
+                <h3 className="text-sm font-mono uppercase tracking-wider text-white/40 mb-8">
                   {t(category.titleKey)}
                 </h3>
 
@@ -81,20 +85,20 @@ export function StackSection() {
                   {category.skills.map((skill) => (
                     <div
                       key={skill.name}
-                      className="flex items-center justify-between p-4 rounded-xl bg-secondary/30 hover:bg-secondary/50 transition-colors duration-200 group"
+                      className="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-200 group"
                     >
                       <div className="flex items-center gap-4">
-                        <TechIcon path={skill.icon} className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
-                        <span className="text-base font-medium">{skill.name}</span>
+                        <TechIcon path={skill.icon} className="w-6 h-6 text-white/40 group-hover:text-[#00f5ff] transition-colors" />
+                        <span className="text-base font-medium text-white/80">{skill.name}</span>
                       </div>
-                      <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-primary/10 text-primary/80">
+                      <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-[#00f5ff]/10 text-[#00f5ff]/80">
                         {skill.badge}
                       </span>
                     </div>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
