@@ -27,29 +27,29 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <nav
-        className={`mx-auto max-w-6xl px-6 py-4 flex items-center justify-between transition-all duration-300 ${
+        className={`mx-auto max-w-7xl px-6 sm:px-8 py-5 flex items-center justify-between transition-all duration-300 ${
           isScrolled
             ? "bg-background/80 backdrop-blur-xl border-b border-border/30"
             : "bg-transparent"
         }`}
       >
         {/* Logo */}
-        <a href="#inicio" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center transition-colors group-hover:border-primary/40">
-            <span className="text-xs font-bold text-primary tracking-tight">AB</span>
+        <a href="#inicio" className="flex items-center gap-3 group">
+          <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center transition-all duration-300 group-hover:border-primary/50 group-hover:bloom-sm">
+            <span className="text-sm font-bold text-primary tracking-tight">AB</span>
           </div>
-          <span className="text-sm font-semibold tracking-tight text-foreground/90 group-hover:text-foreground transition-colors">
+          <span className="text-base font-semibold tracking-tight text-foreground/90 group-hover:text-foreground transition-colors">
             ABDEV
           </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group"
+              className="relative text-base font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group"
             >
               {t(link.labelKey)}
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
@@ -59,7 +59,7 @@ export function Navbar() {
           {/* Language toggle */}
           <button
             onClick={toggleLanguage}
-            className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Toggle language"
           >
             <span className={language === "es" ? "text-primary" : ""}>ES</span>
@@ -70,7 +70,7 @@ export function Navbar() {
           {/* Contact link */}
           <a
             href="#contacto"
-            className="text-sm font-medium px-4 py-2 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+            className="text-base font-medium px-5 py-2.5 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 bloom-sm hover:bloom-md"
           >
             {t("nav.contactar")}
           </a>
@@ -82,19 +82,19 @@ export function Navbar() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mx-4 mb-4 p-5 rounded-xl glass">
-          <div className="flex flex-col gap-4">
+        <div className="md:hidden mx-4 mb-4 p-6 rounded-xl glass">
+          <div className="flex flex-col gap-5">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t(link.labelKey)}
@@ -102,14 +102,14 @@ export function Navbar() {
             ))}
             <a
               href="#contacto"
-              className="text-sm font-medium text-center px-4 py-2.5 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground transition-all"
+              className="text-base font-medium text-center px-5 py-3 rounded-full border border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground transition-all"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {t("nav.contactar")}
             </a>
             <button
               onClick={() => { toggleLanguage(); setIsMobileMenuOpen(false) }}
-              className="flex items-center justify-center gap-2 text-xs font-medium text-muted-foreground"
+              className="flex items-center justify-center gap-2 text-sm font-medium text-muted-foreground"
             >
               <span className={language === "es" ? "text-primary" : ""}>ES</span>
               <span className="text-border">/</span>

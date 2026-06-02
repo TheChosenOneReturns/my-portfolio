@@ -73,28 +73,25 @@ export function BioSection() {
   ]
 
   return (
-    <section id="sobre-mi" className="relative py-24 px-4" ref={ref}>
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
+    <section id="sobre-mi" className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
+      <div className="max-w-5xl mx-auto">
         <div
-          className={`mb-16 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+          className={`mb-20 transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-5">
             {language === "es" ? "Trayectoria" : "Trajectory"}
           </h2>
-          <p className="text-muted-foreground max-w-xl">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
             {language === "es"
               ? "De los fundamentos del código a la integración de IA. Un camino de curiosidad constante."
               : "From coding fundamentals to AI integration. A path of constant curiosity."}
           </p>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-border" />
+          <div className="absolute left-7 md:left-8 top-0 bottom-0 w-px bg-border" />
 
-          <div className="space-y-12">
+          <div className="space-y-16">
             {timeline.map((item, index) => {
               const title = item.titleKey.startsWith("bio.") ? t(item.titleKey) : item.titleKey
               const subtitle = item.subtitleKey.startsWith("bio.") ? t(item.subtitleKey) : item.subtitleKey
@@ -102,45 +99,41 @@ export function BioSection() {
               return (
                 <div
                   key={index}
-                  className={`relative flex gap-6 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                  style={{ transitionDelay: `${index * 150}ms` }}
+                  className={`relative flex gap-6 md:gap-8 transition-all duration-1000 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                  style={{ transitionDelay: `${index * 200}ms` }}
                 >
-                  {/* Node */}
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-card border border-border flex items-center justify-center">
-                      <item.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-card border border-border flex items-center justify-center">
+                      <item.icon className="w-6 h-6 md:w-7 md:h-7 text-primary" />
                     </div>
                   </div>
 
-                  {/* Content */}
                   <div className="flex-1 pt-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-mono text-primary/70 px-2 py-0.5 rounded bg-primary/5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-sm font-mono text-primary/70 px-2.5 py-1 rounded bg-primary/5">
                         {item.year}
                       </span>
                     </div>
 
-                    <h3 className="text-lg md:text-xl font-semibold mb-1">{title}</h3>
-                    <p className="text-sm text-muted-foreground mb-1">{subtitle}</p>
-                    <p className="text-sm text-foreground/70 leading-relaxed mb-4">{item.description}</p>
+                    <h3 className="text-xl md:text-2xl font-semibold mb-2">{title}</h3>
+                    <p className="text-base text-muted-foreground mb-2">{subtitle}</p>
+                    <p className="text-base text-foreground/70 leading-relaxed mb-5">{item.description}</p>
 
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-5">
                       {item.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-2.5 py-1 rounded-full text-xs font-mono bg-secondary/40 border border-border/30 text-muted-foreground"
+                          className="px-3 py-1.5 rounded-full text-sm font-mono bg-secondary/30 border border-border/30 text-muted-foreground"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    {/* Achievements */}
-                    <ul className="space-y-1.5">
+                    <ul className="space-y-2">
                       {item.achievementKeys.map((key, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-foreground/60">
-                          <span className="w-1 h-1 rounded-full bg-primary/50 mt-1.5 flex-shrink-0" />
+                        <li key={i} className="flex items-start gap-3 text-base text-foreground/60">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/50 mt-2 flex-shrink-0" />
                           {t(key)}
                         </li>
                       ))}
