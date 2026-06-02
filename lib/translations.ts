@@ -67,6 +67,9 @@ export const translations: Record<string, Record<string, string>> = {
         "projects.empatia.features.1": "Detección precoz",
         "projects.empatia.features.2": "Deep learning",
 
+        "projects.title": "Case Studies",
+        "projects.subtitle": "Tres proyectos que representan el espectro de lo que construyo.",
+        "projects.viewDetails": "Ver detalles",
         "projects.popup.keyResults": "Resultados Clave",
         "projects.popup.techStack": "Tech Stack",
         "projects.popup.viewDemo": "Ver Demo",
@@ -141,6 +144,9 @@ export const translations: Record<string, Record<string, string>> = {
         "projects.empatia.features.1": "Early detection",
         "projects.empatia.features.2": "Deep learning",
 
+        "projects.title": "Case Studies",
+        "projects.subtitle": "Three projects representing the spectrum of what I build.",
+        "projects.viewDetails": "View details",
         "projects.popup.keyResults": "Key Results",
         "projects.popup.techStack": "Tech Stack",
         "projects.popup.viewDemo": "View Demo",

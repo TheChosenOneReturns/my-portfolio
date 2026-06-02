@@ -38,70 +38,72 @@ const projects = [
 
 function ProjectModal({ project, isOpen, onClose }: { project: (typeof projects)[0] | null; isOpen: boolean; onClose: () => void }) {
   const { t } = useLanguage()
-  if (!project || !isOpen) return null
+  if (!project) return null
 
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4"
-        onClick={onClose}
-      >
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" />
+      {isOpen && (
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-[#0a0a0a]/90 backdrop-blur-2xl rounded-2xl p-8 md:p-10 border border-white/10"
-          onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          onClick={onClose}
         >
-          <button onClick={onClose} className="absolute top-5 right-5 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors">
-            <X className="w-5 h-5" />
-          </button>
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" />
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-[#0a0a0a]/90 backdrop-blur-2xl rounded-2xl p-8 md:p-10 border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button onClick={onClose} className="absolute top-5 right-5 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors">
+              <X className="w-5 h-5" />
+            </button>
 
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">{project.title}</h2>
-              <span className="px-3 py-1 rounded-full text-sm font-medium text-white" style={{ backgroundColor: project.accent }}>
-                {project.badge}
-              </span>
-            </div>
-          </div>
-
-          <p className="text-lg text-white/70 leading-relaxed mb-8">
-            {t(project.descriptionKey)}
-          </p>
-
-          <div className="mb-8">
-            <h3 className="text-sm font-mono uppercase tracking-wider text-white/40 mb-4">
-              {t("projects.popup.keyResults")}
-            </h3>
-            <ul className="space-y-3">
-              {project.features.map((feat, i) => (
-                <li key={i} className="flex items-start gap-3 text-base text-white/70">
-                  <span className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: project.accent }} />
-                  {t(feat)}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-mono uppercase tracking-wider text-white/40 mb-4">
-              {t("projects.popup.techStack")}
-            </h3>
-            <div className="flex flex-wrap gap-2.5">
-              {project.stack.map((tech) => (
-                <span key={tech} className="px-3.5 py-2 rounded-full text-sm font-mono bg-white/5 border border-white/10 text-white/60">
-                  {tech}
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-white">{project.title}</h2>
+                <span className="px-3 py-1 rounded-full text-sm font-medium text-white" style={{ backgroundColor: project.accent }}>
+                  {project.badge}
                 </span>
-              ))}
+              </div>
             </div>
-          </div>
+
+            <p className="text-lg text-white/70 leading-relaxed mb-8">
+              {t(project.descriptionKey)}
+            </p>
+
+            <div className="mb-8">
+              <h3 className="text-sm font-mono uppercase tracking-wider text-white/40 mb-4">
+                {t("projects.popup.keyResults")}
+              </h3>
+              <ul className="space-y-3">
+                {project.features.map((feat, i) => (
+                  <li key={i} className="flex items-start gap-3 text-base text-white/70">
+                    <span className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: project.accent }} />
+                    {t(feat)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-mono uppercase tracking-wider text-white/40 mb-4">
+                {t("projects.popup.techStack")}
+              </h3>
+              <div className="flex flex-wrap gap-2.5">
+                {project.stack.map((tech) => (
+                  <span key={tech} className="px-3.5 py-2 rounded-full text-sm font-mono bg-white/5 border border-white/10 text-white/60">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </AnimatePresence>
   )
 }
@@ -132,9 +134,9 @@ export function ProjectsSection() {
           transition={{ duration: 0.8 }}
           className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Case Studies</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">{t("projects.title")}</h2>
           <p className="text-lg md:text-xl text-white/50 max-w-2xl">
-            Tres proyectos que representan el espectro de lo que construyo.
+            {t("projects.subtitle")}
           </p>
         </motion.div>
 
@@ -192,7 +194,7 @@ export function ProjectsSection() {
                     ))}
                   </div>
                   <button onClick={() => openModal(project)} className="inline-flex items-center gap-2 text-base font-medium text-[#00f5ff] hover:text-[#00f5ff]/80 transition-colors group">
-                    Ver detalles
+                    {t("projects.viewDetails")}
                     <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                   </button>
                 </div>
@@ -202,7 +204,7 @@ export function ProjectsSection() {
         </div>
       </div>
 
-      {isModalOpen && <ProjectModal project={selectedProject} isOpen={isModalOpen} onClose={closeModal} />}
+      <ProjectModal project={selectedProject} isOpen={isModalOpen} onClose={closeModal} />
     </section>
   )
 }
