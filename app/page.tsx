@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer"
 import { ParticlesBackground } from "@/components/particles-background"
 import { ClientWrapper } from "@/components/client-wrapper"
 import { AnimatedTitle } from "@/components/animated-title"
+import { ScrollProgress } from "@/components/scroll-animations"
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
           emojis={["⚡", "🚀", "💻", "🤖", "✨", "🔥", "💡", "🎯"]}
           interval={2000}
         />
+        <ScrollProgress />
         <ParticlesBackground />
         <Navbar />
         <HeroSection />

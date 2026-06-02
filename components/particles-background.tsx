@@ -36,11 +36,11 @@ export function ParticlesBackground() {
 
   useEffect(() => {
     const colors = [
-      "rgba(236, 72, 153, 0.6)",
       "rgba(34, 211, 238, 0.6)",
-      "rgba(251, 146, 60, 0.5)",
-      "rgba(74, 222, 128, 0.4)",
-      "rgba(167, 139, 250, 0.4)",
+      "rgba(16, 185, 129, 0.6)",
+      "rgba(34, 211, 238, 0.5)",
+      "rgba(16, 185, 129, 0.4)",
+      "rgba(59, 130, 246, 0.4)",
     ]
 
     const newParticles: Particle[] = Array.from({ length: 60 }, (_, i) => ({
@@ -53,7 +53,7 @@ export function ParticlesBackground() {
       delay: Math.random() * 20,
     }))
 
-    const streamColors = ["rgba(236, 72, 153, 0.4)", "rgba(34, 211, 238, 0.4)", "rgba(251, 146, 60, 0.3)"]
+    const streamColors = ["rgba(34, 211, 238, 0.4)", "rgba(16, 185, 129, 0.4)", "rgba(59, 130, 246, 0.3)"]
     const newDataStreams: DataStream[] = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -82,7 +82,7 @@ export function ParticlesBackground() {
       <div
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse 100% 100% at 50% 0%, rgb(15, 5, 25) 0%, rgb(8, 8, 15) 100%)",
+          background: "radial-gradient(ellipse 100% 100% at 50% 0%, rgb(8, 15, 25) 0%, rgb(6, 9, 18) 100%)",
         }}
       />
 
@@ -91,7 +91,7 @@ export function ParticlesBackground() {
         className="absolute inset-0 opacity-[0.04] animate-circuit-flow"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, rgba(236, 72, 153, 0.5) 1px, transparent 1px), linear-gradient(rgba(34, 211, 238, 0.5) 1px, transparent 1px)",
+            "linear-gradient(90deg, rgba(34, 211, 238, 0.5) 1px, transparent 1px), linear-gradient(rgba(16, 185, 129, 0.5) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -117,7 +117,7 @@ export function ParticlesBackground() {
             width: `${node.size}px`,
             height: `${node.size}px`,
             background:
-              "radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(34, 211, 238, 0.05) 50%, transparent 70%)",
+              "radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%)",
             animationDelay: `${node.delay}s`,
             filter: "blur(1px)",
           }}
@@ -146,7 +146,7 @@ export function ParticlesBackground() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 20% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%), radial-gradient(ellipse 50% 50% at 80% 30%, rgba(34, 211, 238, 0.08) 0%, transparent 50%), radial-gradient(ellipse 70% 40% at 70% 80%, rgba(251, 146, 60, 0.06) 0%, transparent 50%), radial-gradient(ellipse 40% 60% at 10% 70%, rgba(74, 222, 128, 0.05) 0%, transparent 50%)",
+            "radial-gradient(ellipse 60% 40% at 20% 20%, rgba(34, 211, 238, 0.1) 0%, transparent 50%), radial-gradient(ellipse 50% 50% at 80% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%), radial-gradient(ellipse 70% 40% at 70% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%), radial-gradient(ellipse 40% 60% at 10% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 50%)",
         }}
       />
 
@@ -187,19 +187,19 @@ export function ParticlesBackground() {
 
       {/* Corner tech accents */}
       <div className="absolute top-0 left-0 w-48 h-48">
-        <div className="absolute top-12 left-0 w-24 h-px bg-gradient-to-r from-pink-500/60 to-transparent" />
-        <div className="absolute top-0 left-12 w-px h-24 bg-gradient-to-b from-pink-500/60 to-transparent" />
-        <div className="absolute top-12 left-12 w-2 h-2 bg-pink-500/40 rounded-full animate-pulse" />
+        <div className="absolute top-12 left-0 w-24 h-px bg-gradient-to-r from-cyan-500/60 to-transparent" />
+        <div className="absolute top-0 left-12 w-px h-24 bg-gradient-to-b from-cyan-500/60 to-transparent" />
+        <div className="absolute top-12 left-12 w-2 h-2 bg-cyan-500/40 rounded-full animate-pulse" />
       </div>
       <div className="absolute top-0 right-0 w-48 h-48">
-        <div className="absolute top-12 right-0 w-24 h-px bg-gradient-to-l from-cyan-500/60 to-transparent" />
-        <div className="absolute top-0 right-12 w-px h-24 bg-gradient-to-b from-cyan-500/60 to-transparent" />
-        <div className="absolute top-12 right-12 w-2 h-2 bg-cyan-500/40 rounded-full animate-pulse" />
+        <div className="absolute top-12 right-0 w-24 h-px bg-gradient-to-l from-emerald-500/60 to-transparent" />
+        <div className="absolute top-0 right-12 w-px h-24 bg-gradient-to-b from-emerald-500/60 to-transparent" />
+        <div className="absolute top-12 right-12 w-2 h-2 bg-emerald-500/40 rounded-full animate-pulse" />
       </div>
       <div className="absolute bottom-0 left-0 w-48 h-48">
-        <div className="absolute bottom-12 left-0 w-24 h-px bg-gradient-to-r from-orange-500/60 to-transparent" />
-        <div className="absolute bottom-0 left-12 w-px h-24 bg-gradient-to-t from-orange-500/60 to-transparent" />
-        <div className="absolute bottom-12 left-12 w-2 h-2 bg-orange-500/40 rounded-full animate-pulse" />
+        <div className="absolute bottom-12 left-0 w-24 h-px bg-gradient-to-r from-blue-500/60 to-transparent" />
+        <div className="absolute bottom-0 left-12 w-px h-24 bg-gradient-to-t from-blue-500/60 to-transparent" />
+        <div className="absolute bottom-12 left-12 w-2 h-2 bg-blue-500/40 rounded-full animate-pulse" />
       </div>
       <div className="absolute bottom-0 right-0 w-48 h-48">
         <div className="absolute bottom-12 right-0 w-24 h-px bg-gradient-to-l from-emerald-500/60 to-transparent" />
@@ -214,11 +214,11 @@ export function ParticlesBackground() {
           style={{ animationDuration: "60s" }}
         />
         <div
-          className="absolute inset-8 border border-pink-500/20 rounded-full animate-spin"
+          className="absolute inset-8 border border-emerald-500/20 rounded-full animate-spin"
           style={{ animationDuration: "45s", animationDirection: "reverse" }}
         />
         <div
-          className="absolute inset-16 border border-orange-500/10 rounded-full animate-spin"
+          className="absolute inset-16 border border-blue-500/10 rounded-full animate-spin"
           style={{ animationDuration: "30s" }}
         />
       </div>

@@ -34,13 +34,13 @@ export function Navbar() {
         }`}
     >
       <nav
-        className={`flex items-center justify-between px-6 py-3 rounded-full border border-border/50 backdrop-blur-md transition-all duration-500 ${isScrolled ? "bg-card/90 shadow-lg shadow-pink-500/5" : "bg-card/70"
+        className={`flex items-center justify-between px-6 py-3 rounded-full border border-border/50 backdrop-blur-md transition-all duration-500 ${isScrolled ? "bg-card/90 shadow-lg shadow-cyan-500/5" : "bg-card/70"
           }`}
       >
         {/* Logo - Redesigned */}
         <a href="#inicio" className="flex items-center gap-3 group" onMouseEnter={playHover} onClick={() => playClick()}>
-          <div className="p-1.5 bg-gradient-to-br from-pink-500/20 to-cyan-500/20 rounded-lg transition-all duration-300 group-hover:from-pink-500/30 group-hover:to-cyan-500/30 group-hover:shadow-lg group-hover:shadow-pink-500/30 group-hover:scale-110">
-            <Bot className="w-5 h-5 text-pink-400 transition-all duration-300 group-hover:rotate-12" />
+          <div className="p-1.5 bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 rounded-lg transition-all duration-300 group-hover:from-cyan-500/30 group-hover:to-emerald-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/30 group-hover:scale-110">
+            <Bot className="w-5 h-5 text-cyan-400 transition-all duration-300 group-hover:rotate-12" />
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-xs font-medium text-muted-foreground tracking-wider transition-colors duration-300 group-hover:text-foreground/80">
@@ -49,9 +49,9 @@ export function Navbar() {
             <span className="font-bold text-lg tracking-tight">
               <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">DEV</span>
               {" "}
-              <span className="text-pink-400 transition-all duration-300 group-hover:text-pink-300">{"&"}</span>
+              <span className="text-cyan-400 transition-all duration-300 group-hover:text-cyan-300">{"&"}</span>
               {" "}
-              <span className="bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent font-extrabold" suppressHydrationWarning>{language === "es" ? "IA" : "AI"}</span>
+              <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent font-extrabold" suppressHydrationWarning>{language === "es" ? "IA" : "AI"}</span>
             </span>
           </div>
         </a>
@@ -67,7 +67,7 @@ export function Navbar() {
               onClick={() => playWhoosh()}
             >
               {t(link.labelKey)}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-pink-500 to-cyan-500 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-500 to-emerald-500 transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
@@ -80,22 +80,22 @@ export function Navbar() {
               playToggle(language === 'es')
               toggleLanguage()
             }}
-            className="relative flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary/50 border border-border/50 hover:border-cyan-500/30 transition-all duration-300 group"
+            className="relative flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary/50 border border-border/50 hover:border-emerald-500/30 transition-all duration-300 group"
             aria-label="Toggle language"
             onMouseEnter={playHover}
           >
-            <span className={`text-xs font-bold transition-all duration-300 ${language === "es" ? "text-pink-400" : "text-muted-foreground"}`}>
+            <span className={`text-xs font-bold transition-all duration-300 ${language === "es" ? "text-cyan-400" : "text-muted-foreground"}`}>
               ES
             </span>
             <div className="relative w-8 h-4 rounded-full bg-background/50 border border-border/30">
               <div
                 className={`absolute top-0.5 w-3 h-3 rounded-full transition-all duration-300 ${language === "es"
-                  ? "left-0.5 bg-gradient-to-r from-pink-500 to-pink-400"
-                  : "left-[calc(100%-14px)] bg-gradient-to-r from-cyan-500 to-cyan-400"
+                  ? "left-0.5 bg-gradient-to-r from-cyan-500 to-cyan-400"
+                  : "left-[calc(100%-14px)] bg-gradient-to-r from-emerald-500 to-emerald-400"
                   }`}
               />
             </div>
-            <span className={`text-xs font-bold transition-all duration-300 ${language === "en" ? "text-cyan-400" : "text-muted-foreground"}`}>
+            <span className={`text-xs font-bold transition-all duration-300 ${language === "en" ? "text-emerald-400" : "text-muted-foreground"}`}>
               EN
             </span>
           </button>
@@ -251,16 +251,16 @@ export function Navbar() {
               onClick={toggleLanguage}
               className="flex items-center justify-center gap-2 py-2 rounded-full bg-secondary/50 border border-border/50"
             >
-              <span className={`text-sm font-bold ${language === "es" ? "text-pink-400" : "text-muted-foreground"}`}>ES</span>
+              <span className={`text-sm font-bold ${language === "es" ? "text-cyan-400" : "text-muted-foreground"}`}>ES</span>
               <div className="relative w-10 h-5 rounded-full bg-background/50 border border-border/30">
                 <div
                   className={`absolute top-0.5 w-4 h-4 rounded-full transition-all duration-300 ${language === "es"
-                    ? "left-0.5 bg-gradient-to-r from-pink-500 to-pink-400"
-                    : "left-[calc(100%-18px)] bg-gradient-to-r from-cyan-500 to-cyan-400"
+                    ? "left-0.5 bg-gradient-to-r from-cyan-500 to-cyan-400"
+                    : "left-[calc(100%-18px)] bg-gradient-to-r from-emerald-500 to-emerald-400"
                     }`}
                 />
               </div>
-              <span className={`text-sm font-bold ${language === "en" ? "text-cyan-400" : "text-muted-foreground"}`}>EN</span>
+              <span className={`text-sm font-bold ${language === "en" ? "text-emerald-400" : "text-muted-foreground"}`}>EN</span>
             </button>
 
             {navLinks.map((link) => (

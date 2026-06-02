@@ -10,8 +10,8 @@ export const translations: Record<string, Record<string, string>> = {
         // Hero
         "hero.badge": "OPEN TO WORK",
         "hero.title1": "Full Stack. IA.",
-        "hero.title2": "Automatización.",
-        "hero.description": "Finalizando mi carrera en el <strong>ITU</strong>. Combino la ingeniería de software con Inteligencia Artificial y flujos de trabajo inteligentes (n8n) para crear sistemas que no solo funcionan, sino que <em>piensan</em>.",
+        "hero.title2": "Futuro Ahora.",
+        "hero.description": "Graduandome del <strong>ITU</strong> en Julio 2026. Combino ingenieria de software con Agentes IA autonomos y sistemas RAG para crear soluciones que no solo funcionan, sino que <em>evolucionan</em>.",
         "hero.explorePortfolio": "Explorar Portfolio",
         "hero.badge.n8n": "n8n Automation",
         "hero.badge.ai": "AI Engineer",
@@ -99,8 +99,8 @@ export const translations: Record<string, Record<string, string>> = {
         // Hero
         "hero.badge": "OPEN TO WORK",
         "hero.title1": "Full Stack. AI.",
-        "hero.title2": "Automation.",
-        "hero.description": "Finishing my degree at <strong>ITU</strong>. I combine software engineering with Artificial Intelligence and smart workflows (n8n) to create systems that don't just work, they <em>think</em>.",
+        "hero.title2": "Future Now.",
+        "hero.description": "Graduating from <strong>ITU</strong> in July 2026. I combine software engineering with autonomous AI Agents and RAG systems to create solutions that don&apos;t just work, they <em>evolve</em>.",
         "hero.explorePortfolio": "Explore Portfolio",
         "hero.badge.n8n": "n8n Automation",
         "hero.badge.ai": "AI Engineer",
