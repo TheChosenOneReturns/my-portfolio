@@ -279,7 +279,7 @@ export function HeroSection() {
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
                 <img 
-                  src="/futuristic-developer-working-with-ai-holographic-i.jpg" 
+                  src="/futuristic-developer-working-with-ai-holographic-i.png" 
                   alt="AI Developer" 
                   className="w-full h-full object-cover"
                 />

@@ -39,7 +39,7 @@ const projects = [
       { name: "LangChain", color: "border-cyan-500/50 text-cyan-400" },
       { name: "Webhooks", color: "border-foreground/50 text-foreground" },
     ],
-    image: "/n8n-workflow-automation-dashboard-with-connected-n.jpg",
+    image: "/n8n-workflow-automation-dashboard-with-connected-n.png",
     gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDd6YnNxOHdyNTY5Ynlqb2JkaHN1a2NiNnRwdHhneHZxeWJqd2RhZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7TKwmnDgQb5jemjK/giphy.gif",
   },
   {
@@ -74,7 +74,7 @@ const projects = [
       { name: "FastAPI", color: "border-cyan-500/50 text-cyan-400" },
       { name: "Docker", color: "border-emerald-500/50 text-emerald-400" },
     ],
-    image: "/mlops-platform-dashboard-with-model-metrics-and-da.jpg",
+    image: "/mlops-platform-dashboard-with-model-metrics-and-da.png",
     gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWxsNnN5YTQyeWs3Y3VkZW9zYzU5OGRsMjdpOHF3M2h3cGE4OWRoOCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xT9IgzoKnwFNmISR8I/giphy.gif",
   },
   {
@@ -109,7 +109,7 @@ const projects = [
       { name: "TensorFlow", color: "border-cyan-500/50 text-cyan-400" },
       { name: "OpenCV", color: "border-foreground/50 text-foreground" },
     ],
-    image: "/medical-ai-interface-showing-ct-scan-analysis-with.jpg",
+    image: "/medical-ai-interface-showing-ct-scan-analysis-with.png",
     gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWlrOHRzcmlmYnJlNzEwYnVtbWt3eG5mYmNocWdmMDRvc3FjY296YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o6Zt8rGMqVwjYAlsA/giphy.gif",
   },
 ]
