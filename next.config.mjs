@@ -7,10 +7,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-
   // <CHANGE> basePath para GitHub Pages (cambiar 'tu-repo' por el nombre real)
   // basePath: '/tu-repo',
   // assetPrefix: '/tu-repo/',

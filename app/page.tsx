@@ -6,20 +6,14 @@ import { StackSection } from "@/components/stack-section"
 import { BioSection } from "@/components/bio-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
-import { ParticlesBackground } from "@/components/particles-background"
+import { AmbientBackground } from "@/components/ambient-background"
 import { ClientWrapper } from "@/components/client-wrapper"
-import { AnimatedTitle } from "@/components/animated-title"
 
 export default function Home() {
   return (
     <ClientWrapper>
+      <AmbientBackground />
       <main className="relative min-h-screen overflow-hidden">
-        <AnimatedTitle
-          baseTitle="DEV & AI | Ariel Balmaceda"
-          emojis={["⚡", "🚀", "💻", "🤖", "✨", "🔥", "💡", "🎯"]}
-          interval={2000}
-        />
-        <ParticlesBackground />
         <Navbar />
         <HeroSection />
         <AboutSection />

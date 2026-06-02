@@ -1,35 +1,29 @@
 export const translations: Record<string, Record<string, string>> = {
     es: {
         // Navbar
-        "nav.inicio": "INICIO",
-        "nav.proyectos": "PROYECTOS",
-        "nav.stack": "STACK",
-        "nav.sobreMi": "SOBRE MÍ",
-        "nav.contactar": "CONTACTAR",
+        "nav.inicio": "Inicio",
+        "nav.proyectos": "Proyectos",
+        "nav.stack": "Stack",
+        "nav.sobreMi": "Sobre mí",
+        "nav.contactar": "Contactar",
 
         // Hero
-        "hero.badge": "OPEN TO WORK",
-        "hero.title1": "Full Stack. IA.",
-        "hero.title2": "Automatización.",
-        "hero.description": "Finalizando mi carrera en el <strong>ITU</strong>. Combino la ingeniería de software con Inteligencia Artificial y flujos de trabajo inteligentes (n8n) para crear sistemas que no solo funcionan, sino que <em>piensan</em>.",
-        "hero.explorePortfolio": "Explorar Portfolio",
-        "hero.badge.n8n": "n8n Automation",
-        "hero.badge.ai": "AI Engineer",
+        "hero.label": "Estudiante de Desarrollo de Software — ITU",
+        "hero.tagline": "Construyo sistemas que piensan.",
+        "hero.description": "Especializado en inteligencia artificial aplicada, automatización de flujos y arquitecturas web modernas. Combino código con cognición para resolver problemas reales.",
+        "hero.ctaPrimary": "Ver proyectos",
 
-        // About
-        "about.title1": "Vamos a",
-        "about.title2": "Automatizar el Futuro",
-        "about.description": "¿Buscas optimizar flujos de trabajo con n8n, desarrollar modelos de IA o construir una aplicación web robusta? Estoy listo.",
-        "about.cta": "Iniciar Conversación",
+        // About (Statement)
+        "about.statement": "Mi interés no está en la tecnología por la tecnología. Está en usarla como herramienta para liberar tiempo, reducir errores y ampliar lo que una persona puede lograr sola.",
+        "about.cta": "Iniciar conversación",
 
         // Contact
-        "contact.title": "¿Listo para",
-        "contact.titleHighlight": "colaborar",
-        "contact.description": "Estoy disponible para proyectos de automatización, desarrollo de IA y soluciones full-stack. ¡Hablemos!",
-        "contact.sendMessage": "Enviar Mensaje",
+        "contact.title": "¿Hablamos?",
+        "contact.description": "Estoy abierto a proyectos de automatización, desarrollo de IA y soluciones full-stack. Mejor si implica aprender algo nuevo en el camino.",
+        "contact.sendMessage": "Enviar mensaje",
 
         // Footer
-        "footer.builtWith": "Construido con Next.js & ☕",
+        "footer.builtWith": "Diseñado y desarrollado por Ariel Balmaceda",
 
         // Bio Timeline
         "bio.2022.title": "El Comienzo del Viaje",
@@ -58,29 +52,20 @@ export const translations: Record<string, Record<string, string>> = {
         "stack.fullstack": "Full Stack Web",
 
         // Projects
-        "projects.intelligentFlows.description": "Sistema de automatización empresarial con n8n que integra chatbots con memoria de contexto, procesamiento de documentos con IA y sincronización multi-plataforma.",
-        "projects.intelligentFlows.detail": "Sistema de automatización completo con integración de IA y workflows inteligentes.",
-        "projects.intelligentFlows.results.1": "Reducción del 80% en tareas manuales",
-        "projects.intelligentFlows.results.2": "Procesamiento de 1000+ documentos diarios",
-        "projects.intelligentFlows.results.3": "Integración con 15+ plataformas empresariales",
+        "projects.intelligentFlows.description": "Diseño de arquitecturas de automatización con n8n que integran LLMs, bases de datos y herramientas empresariales. El foco está en reducir trabajo manual repetitivo y crear flujos que escalan sin intervención constante.",
+        "projects.intelligentFlows.detail": "Complete automation system with AI integration and smart workflows.",
         "projects.intelligentFlows.features.1": "Chatbots con memoria de contexto",
-        "projects.intelligentFlows.features.2": "Integración multi-plataforma (Slack, WhatsApp, CRM)",
+        "projects.intelligentFlows.features.2": "Integración multi-plataforma",
 
-        "projects.prega.description": "Plataforma MLOps para gestión de modelos de Machine Learning con registro, versionado, A/B testing y despliegue continuo.",
-        "projects.prega.detail": "Plataforma MLOps robusta con CI/CD para modelos de ML.",
-        "projects.prega.results.1": "Gestión de 50+ modelos en producción",
-        "projects.prega.results.2": "Reducción del 60% en tiempo de despliegue",
-        "projects.prega.results.3": "Monitoreo en tiempo real de métricas",
-        "projects.prega.features.1": "Gestión de Modelos",
-        "projects.prega.features.2": "Feedback en Tiempo Real",
+        "projects.prega.description": "Herramienta para gestionar el ciclo de vida de modelos de machine learning: registro, versionado, testing y despliegue. Pensada para equipos pequeños que necesitan disciplina de MLOps sin la complejidad de plataformas enterprise.",
+        "projects.prega.detail": "Robust MLOps platform with CI/CD for ML models.",
+        "projects.prega.features.1": "Gestión de modelos",
+        "projects.prega.features.2": "Feedback en tiempo real",
 
-        "projects.empatia.description": "Sistema de diagnóstico por imágenes con Deep Learning para detectar enfermedades a través de análisis de imágenes médicas.",
-        "projects.empatia.detail": "Sistema de diagnóstico por imágenes médicas con IA.",
-        "projects.empatia.results.1": "Precisión del 94% en detección",
-        "projects.empatia.results.2": "Análisis en menos de 3 segundos",
-        "projects.empatia.results.3": "Soporte para múltiples modalidades",
-        "projects.empatia.features.1": "Detección Precoz",
-        "projects.empatia.features.2": "Deep Learning",
+        "projects.empatia.description": "Sistema de asistencia al diagnóstico mediante análisis de imágenes médicas con deep learning. Diseñado como segunda opinión para radiólogos, no como reemplazo. Prioriza la reducción de falsos negativos sobre la velocidad pura.",
+        "projects.empatia.detail": "Medical image diagnostic system with AI.",
+        "projects.empatia.features.1": "Detección precoz",
+        "projects.empatia.features.2": "Deep learning",
 
         "projects.popup.keyResults": "Resultados Clave",
         "projects.popup.techStack": "Tech Stack",
@@ -90,35 +75,29 @@ export const translations: Record<string, Record<string, string>> = {
 
     en: {
         // Navbar
-        "nav.inicio": "HOME",
-        "nav.proyectos": "PROJECTS",
-        "nav.stack": "STACK",
-        "nav.sobreMi": "ABOUT ME",
-        "nav.contactar": "CONTACT",
+        "nav.inicio": "Home",
+        "nav.proyectos": "Projects",
+        "nav.stack": "Stack",
+        "nav.sobreMi": "About",
+        "nav.contactar": "Contact",
 
         // Hero
-        "hero.badge": "OPEN TO WORK",
-        "hero.title1": "Full Stack. AI.",
-        "hero.title2": "Automation.",
-        "hero.description": "Finishing my degree at <strong>ITU</strong>. I combine software engineering with Artificial Intelligence and smart workflows (n8n) to create systems that don't just work, they <em>think</em>.",
-        "hero.explorePortfolio": "Explore Portfolio",
-        "hero.badge.n8n": "n8n Automation",
-        "hero.badge.ai": "AI Engineer",
+        "hero.label": "Software Development Student — ITU",
+        "hero.tagline": "I build systems that think.",
+        "hero.description": "Specialized in applied artificial intelligence, workflow automation, and modern web architectures. Combining code with cognition to solve real problems.",
+        "hero.ctaPrimary": "View projects",
 
-        // About
-        "about.title1": "Let's",
-        "about.title2": "Automate the Future",
-        "about.description": "Looking to optimize workflows with n8n, develop AI models, or build a robust web application? I'm ready.",
-        "about.cta": "Start a Conversation",
+        // About (Statement)
+        "about.statement": "My interest isn't in technology for technology's sake. It's in using it as a tool to free up time, reduce errors, and expand what one person can achieve alone.",
+        "about.cta": "Start a conversation",
 
         // Contact
-        "contact.title": "Ready to",
-        "contact.titleHighlight": "collaborate",
-        "contact.description": "I'm available for automation projects, AI development, and full-stack solutions. Let's talk!",
-        "contact.sendMessage": "Send Message",
+        "contact.title": "Let's talk?",
+        "contact.description": "I'm open to automation projects, AI development, and full-stack solutions. Even better if it involves learning something new along the way.",
+        "contact.sendMessage": "Send message",
 
         // Footer
-        "footer.builtWith": "Built with Next.js & ☕",
+        "footer.builtWith": "Designed and developed by Ariel Balmaceda",
 
         // Bio Timeline
         "bio.2022.title": "The Beginning of the Journey",
@@ -147,29 +126,20 @@ export const translations: Record<string, Record<string, string>> = {
         "stack.fullstack": "Full Stack Web",
 
         // Projects
-        "projects.intelligentFlows.description": "Enterprise automation system with n8n integrating chatbots with context memory, AI document processing, and multi-platform synchronization.",
+        "projects.intelligentFlows.description": "Design of automation architectures with n8n that integrate LLMs, databases, and enterprise tools. Focused on reducing repetitive manual work and creating flows that scale without constant intervention.",
         "projects.intelligentFlows.detail": "Complete automation system with AI integration and smart workflows.",
-        "projects.intelligentFlows.results.1": "80% reduction in manual tasks",
-        "projects.intelligentFlows.results.2": "Processing 1000+ documents daily",
-        "projects.intelligentFlows.results.3": "Integration with 15+ enterprise platforms",
         "projects.intelligentFlows.features.1": "Chatbots with context memory",
-        "projects.intelligentFlows.features.2": "Multi-platform integration (Slack, WhatsApp, CRM)",
+        "projects.intelligentFlows.features.2": "Multi-platform integration",
 
-        "projects.prega.description": "MLOps platform for Machine Learning model management with registry, versioning, A/B testing, and continuous deployment.",
+        "projects.prega.description": "Tool for managing the lifecycle of machine learning models: registry, versioning, testing, and deployment. Designed for small teams that need MLOps discipline without enterprise platform complexity.",
         "projects.prega.detail": "Robust MLOps platform with CI/CD for ML models.",
-        "projects.prega.results.1": "Managing 50+ models in production",
-        "projects.prega.results.2": "60% reduction in deployment time",
-        "projects.prega.results.3": "Real-time metrics monitoring",
-        "projects.prega.features.1": "Model Management",
-        "projects.prega.features.2": "Real-Time Feedback",
+        "projects.prega.features.1": "Model management",
+        "projects.prega.features.2": "Real-time feedback",
 
-        "projects.empatia.description": "Image-based diagnostic system with Deep Learning to detect diseases through medical image analysis.",
+        "projects.empatia.description": "Diagnostic assistance system using deep learning medical image analysis. Designed as a second opinion for radiologists, not a replacement. Prioritizes reducing false negatives over pure speed.",
         "projects.empatia.detail": "Medical image diagnostic system with AI.",
-        "projects.empatia.results.1": "94% detection accuracy",
-        "projects.empatia.results.2": "Analysis in under 3 seconds",
-        "projects.empatia.results.3": "Support for multiple modalities",
-        "projects.empatia.features.1": "Early Detection",
-        "projects.empatia.features.2": "Deep Learning",
+        "projects.empatia.features.1": "Early detection",
+        "projects.empatia.features.2": "Deep learning",
 
         "projects.popup.keyResults": "Key Results",
         "projects.popup.techStack": "Tech Stack",

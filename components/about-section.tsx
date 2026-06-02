@@ -4,42 +4,31 @@ import { useInView } from "@/hooks/use-in-view"
 import { useLanguage } from "@/lib/language-context"
 
 export function AboutSection() {
-  const { ref, isInView } = useInView({ threshold: 0.2 })
+  const { ref, isInView } = useInView({ threshold: 0.3 })
   const { t } = useLanguage()
 
   return (
     <section id="sobre-mi-intro" className="relative py-32 px-4" ref={ref}>
-      <div className="max-w-4xl mx-auto text-center">
-        <h2
-          className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-8 transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          suppressHydrationWarning
+      <div className="max-w-3xl mx-auto text-center">
+        <blockquote
+          className={`transition-all duration-700 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
-          <span className="text-foreground">{t("about.title1")}</span>
-          <br />
-          <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
-            {t("about.title2")}
-          </span>
-        </h2>
-
-        <p
-          className={`text-lg text-muted-foreground max-w-2xl mx-auto mb-12 transition-all duration-700 delay-200 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          suppressHydrationWarning
-        >
-          {t("about.description")}
-        </p>
+          <p className="text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed text-foreground/90">
+            <span className="text-primary/60 text-5xl leading-none">&ldquo;</span>
+            {t("about.statement")}
+            <span className="text-primary/60 text-5xl leading-none">&rdquo;</span>
+          </p>
+        </blockquote>
 
         <div
-          className={`transition-all duration-700 delay-400 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+          className={`mt-12 transition-all duration-700 delay-200 ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
           <a
             href="#contacto"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-foreground text-background font-semibold text-lg hover:bg-foreground/90 transition-colors"
-            suppressHydrationWarning
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors group"
           >
             {t("about.cta")}
+            <span className="transition-transform group-hover:translate-x-1">→</span>
           </a>
         </div>
       </div>
