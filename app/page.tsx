@@ -9,6 +9,8 @@ import { Footer } from "@/components/footer"
 import { WebGLBackground } from "@/components/webgl-background"
 import { ClientWrapper } from "@/components/client-wrapper"
 import { SmoothScroll } from "@/components/smooth-scroll"
+import { SectionDivider } from "@/components/section-divider"
+import { SectionIndex } from "@/components/section-index"
 
 export default function Home() {
   return (
@@ -17,11 +19,17 @@ export default function Home() {
         <WebGLBackground />
         <main className="relative min-h-screen overflow-hidden">
           <Navbar />
+          <SectionIndex />
           <HeroSection />
+          <SectionDivider />
           <AboutSection />
+          <SectionDivider />
           <ProjectsSection />
+          <SectionDivider />
           <StackSection />
+          <SectionDivider />
           <BioSection />
+          <SectionDivider />
           <ContactSection />
           <Footer />
         </main>

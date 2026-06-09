@@ -1,15 +1,13 @@
+const repoName = "my-portfolio"
+const isGithubPages = process.env.GITHUB_PAGES === "true"
+
 const nextConfig = {
-  // <CHANGE> Agregar output: 'export' para GitHub Pages
-  output: 'export',
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: "export",
   images: {
     unoptimized: true,
   },
-  // <CHANGE> basePath para GitHub Pages (cambiar 'tu-repo' por el nombre real)
-  // basePath: '/tu-repo',
-  // assetPrefix: '/tu-repo/',
+  basePath: isGithubPages ? `/${repoName}` : undefined,
+  assetPrefix: isGithubPages ? `/${repoName}/` : undefined,
 }
 
 export default nextConfig

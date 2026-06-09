@@ -762,7 +762,7 @@ export function SpaceInvaders({ onClose }: { onClose: () => void }) {
     }
 
     // Draw bullet with trail
-    const drawBullet = (ctx: CanvasRenderingContext2D, bullet: Bullet, frame: number) => {
+    const drawBullet = (ctx: CanvasRenderingContext2D, bullet: Bullet) => {
         const color = bullet.isBoss ? "#ef4444" : bullet.isEnemy ? "#ec4899" : "#22d3ee"
         const size = bullet.isBoss ? 8 : BULLET_WIDTH
 
@@ -895,8 +895,8 @@ export function SpaceInvaders({ onClose }: { onClose: () => void }) {
                 if (state.boss?.alive) drawBoss(ctx, state.boss, state.frameCount)
                 state.enemies.forEach(e => { if (e.alive) drawEnemy(ctx, e, state.frameCount) })
                 drawPlayer(ctx, state.playerX, state.frameCount)
-                state.playerBullets.forEach(b => drawBullet(ctx, b, state.frameCount))
-                state.enemyBullets.forEach(b => drawBullet(ctx, b, state.frameCount))
+                state.playerBullets.forEach(b => drawBullet(ctx, b))
+                state.enemyBullets.forEach(b => drawBullet(ctx, b))
                 drawParticles(ctx)
                 animationId = requestAnimationFrame(gameLoop)
                 return
@@ -1067,7 +1067,6 @@ export function SpaceInvaders({ onClose }: { onClose: () => void }) {
                         bullet.y > boss.y && bullet.y < boss.y + BOSS_HEIGHT
                     ) {
                         state.playerBullets.splice(bi, 1)
-                        const prevHealth = boss.health
                         boss.health--
 
                         // Damage animation
@@ -1318,8 +1317,8 @@ export function SpaceInvaders({ onClose }: { onClose: () => void }) {
             }
 
             drawPlayer(ctx, state.playerX, state.frameCount)
-            state.playerBullets.forEach(b => drawBullet(ctx, b, state.frameCount))
-            state.enemyBullets.forEach(b => drawBullet(ctx, b, state.frameCount))
+            state.playerBullets.forEach(b => drawBullet(ctx, b))
+            state.enemyBullets.forEach(b => drawBullet(ctx, b))
             state.powerUps.forEach(p => drawPowerUp(ctx, p, state.frameCount))
             drawParticles(ctx)
 

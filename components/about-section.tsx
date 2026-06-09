@@ -9,7 +9,7 @@ export function AboutSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="sobre-mi-intro" className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="sobre-mi-intro" className="section-fog relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-4xl mx-auto text-center">
         <motion.blockquote
           initial={{ opacity: 0, y: 40 }}
@@ -17,9 +17,9 @@ export function AboutSection() {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-relaxed text-white/90">
-            <span className="text-[#00f5ff]/50 text-6xl md:text-7xl leading-none">&ldquo;</span>
+            <span className="text-[var(--spectral-cyan)]/60 text-6xl md:text-7xl leading-none">&ldquo;</span>
             {t("about.statement")}
-            <span className="text-[#00f5ff]/50 text-6xl md:text-7xl leading-none">&rdquo;</span>
+            <span className="text-[var(--spectral-magenta)]/60 text-6xl md:text-7xl leading-none">&rdquo;</span>
           </p>
         </motion.blockquote>
 
@@ -31,7 +31,7 @@ export function AboutSection() {
         >
           <a
             href="#contacto"
-            className="inline-flex items-center gap-2 text-lg font-medium text-[#00f5ff] hover:text-[#00f5ff]/80 transition-colors group"
+            className="inline-flex items-center gap-2 text-lg font-medium text-[var(--spectral-cyan)] hover:text-[var(--hot-white)] transition-colors group"
           >
             {t("about.cta")}
             <span className="transition-transform group-hover:translate-x-1">&rarr;</span>

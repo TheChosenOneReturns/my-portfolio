@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ariel Balmaceda Portfolio
 
-## Getting Started
+Portfolio personal construido con Next.js, React, Tailwind CSS, Framer Motion, Lenis y React Three Fiber. La experiencia combina una narrativa profesional con un fondo WebGL sci-fi, paleta cromática iridiscente, navegación por secciones, soporte ES/EN y un juego oculto.
 
-First, run the development server:
+## Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run typecheck
+npm run build
+npm run build:github
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Desarrollo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Abrí `http://localhost:3000` para trabajar localmente. El build local usa rutas normales; el build de GitHub Pages agrega el prefijo `/my-portfolio`.
 
-## Learn More
+## Deploy en GitHub Pages
 
-To learn more about Next.js, take a look at the following resources:
+Para generar el sitio estático con el `basePath` correcto:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build:github
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+El resultado queda en `out/`, listo para publicarse en GitHub Pages para el repositorio `TheChosenOneReturns/my-portfolio`.
 
-## Deploy on Vercel
+También hay un workflow en `.github/workflows/deploy-pages.yml` que publica automáticamente en GitHub Pages al hacer push a `main`. La URL pública esperada es:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+https://thechosenonereturns.github.io/my-portfolio/
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Si más adelante se usa un dominio propio, quitá la variable `GITHUB_PAGES=true` del build de producción o ajustá `next.config.mjs`.
+
+## Cómo funciona el agujero negro
+
+El fondo vive en `components/webgl-background.tsx` y usa React Three Fiber para montar un `Canvas` fijo detrás del contenido. La pieza central es un plano 2D con un shader propio: en vez de modelar geometría compleja, cada pixel se calcula desde sus coordenadas UV.
+
+El shader transforma las UV para ubicar el centro del agujero negro, corregir el aspecto de pantalla y simular un disco de acreción inclinado. La distancia al centro define el horizonte oscuro, el photon ring brillante y las bandas del disco. Para que no parezca una textura plana, se agregan ruido procedural, turbulencia temporal y una curva de color tipo prisma con blanco caliente, naranja, cyan, azul, magenta y violeta.
+
+La niebla viene de capas radiales suaves mezcladas con ruido. Eso crea profundidad hacia los bordes y evita que el canvas se vea como un rectángulo pegado al fondo. Los streaks cromáticos son líneas diagonales generadas dentro del shader; aparecen con baja intensidad alrededor del disco para dar ese efecto sci-fi/anime sin usar imágenes externas.
+
+Las estrellas y partículas se generan de forma determinística con posiciones pseudoaleatorias estables. En desktop hay más densidad y bloom; en mobile se baja el DPR y la cantidad visual para cuidar rendimiento. Si el usuario activa `prefers-reduced-motion`, el Canvas no corre animación pesada y se muestra un fallback estático con glow y fog.
+
+Para modificarlo, buscá estas ideas dentro del shader:
+
+- `center`: mueve el agujero negro en pantalla.
+- `diskUv.y *= ...`: controla qué tan inclinado se ve el disco.
+- `temperature(...)` y `prism(...)`: cambian la paleta.
+- `ring`, `disk`, `photon`: ajustan grosor e intensidad.
+- `fog` y `chromaStreaks`: controlan atmósfera y fragmentos iridiscentes.

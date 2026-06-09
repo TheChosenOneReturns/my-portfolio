@@ -57,7 +57,7 @@ export function BioSection() {
   ]
 
   return (
-    <section id="sobre-mi" className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="sobre-mi" className="section-fog relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -74,7 +74,7 @@ export function BioSection() {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-7 md:left-8 top-0 bottom-0 w-px bg-white/10" />
+          <div className="absolute left-7 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--spectral-cyan)]/0 via-[var(--spectral-cyan)]/45 to-[var(--spectral-magenta)]/0" />
 
           <div className="space-y-16">
             {timeline.map((item, index) => {
@@ -90,14 +90,14 @@ export function BioSection() {
                   className="relative flex gap-6 md:gap-8"
                 >
                   <div className="relative z-10 flex-shrink-0">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center">
-                      <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[#00f5ff]" />
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[var(--void-black)] border border-[var(--spectral-cyan)]/25 flex items-center justify-center shadow-[0_0_30px_rgba(0,245,255,0.12)]">
+                      <item.icon className="w-6 h-6 md:w-7 md:h-7 text-[var(--spectral-cyan)]" />
                     </div>
                   </div>
 
                   <div className="flex-1 pt-1">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-sm font-mono text-[#00f5ff]/70 px-2.5 py-1 rounded bg-[#00f5ff]/5">
+                      <span className="text-sm font-mono text-[var(--hot-white)] px-2.5 py-1 rounded border border-[var(--accretion-orange)]/25 bg-[var(--accretion-orange)]/10">
                         {item.year}
                       </span>
                     </div>
@@ -108,7 +108,7 @@ export function BioSection() {
 
                     <div className="flex flex-wrap gap-2 mb-5">
                       {item.technologies.map((tech) => (
-                        <span key={tech} className="px-3 py-1.5 rounded-full text-sm font-mono bg-white/[0.03] border border-white/10 text-white/50">
+                        <span key={tech} className="px-3 py-1.5 rounded-full text-sm font-mono bg-white/[0.035] border border-white/10 text-white/55 hover:border-[var(--spectral-magenta)]/35 transition-colors">
                           {tech}
                         </span>
                       ))}
@@ -117,7 +117,7 @@ export function BioSection() {
                     <ul className="space-y-2">
                       {item.achievementKeys.map((key, i) => (
                         <li key={i} className="flex items-start gap-3 text-base text-white/50">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#00f5ff]/50 mt-2 flex-shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--spectral-cyan)]/70 mt-2 flex-shrink-0 shadow-[0_0_12px_rgba(0,245,255,0.45)]" />
                           {t(key)}
                         </li>
                       ))}

@@ -10,7 +10,16 @@ class RetroSoundGenerator {
 
     private getContext(): AudioContext {
         if (!this.audioContext) {
-            this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+            const audioWindow = window as Window & typeof globalThis & {
+                webkitAudioContext?: typeof AudioContext
+            }
+            const AudioContextConstructor = audioWindow.AudioContext || audioWindow.webkitAudioContext
+
+            if (!AudioContextConstructor) {
+                throw new Error("Web Audio API is not supported in this browser")
+            }
+
+            this.audioContext = new AudioContextConstructor()
             this.masterGain = this.audioContext.createGain()
             this.masterGain.connect(this.audioContext.destination)
             this.masterGain.gain.value = 0.3 // Master volume

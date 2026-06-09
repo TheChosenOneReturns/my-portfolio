@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useInView } from "@/hooks/use-in-view"
 import { X, ExternalLink } from "lucide-react"
@@ -11,7 +11,7 @@ const projects = [
     id: "intelligent-flows",
     title: "Intelligent Flows",
     badge: "n8n &middot; Automation",
-    accent: "#00f5ff",
+    accent: "var(--spectral-cyan)",
     descriptionKey: "projects.intelligentFlows.description",
     features: ["projects.intelligentFlows.features.1", "projects.intelligentFlows.features.2"],
     stack: ["n8n", "LangChain", "PostgreSQL", "Redis", "Docker", "OpenAI API"],
@@ -20,7 +20,7 @@ const projects = [
     id: "prega",
     title: "PREGA",
     badge: "MLOps",
-    accent: "#ff6b35",
+    accent: "var(--accretion-orange)",
     descriptionKey: "projects.prega.description",
     features: ["projects.prega.features.1", "projects.prega.features.2"],
     stack: ["Python", "FastAPI", "Docker", "MLflow", "PostgreSQL", "Redis"],
@@ -29,7 +29,7 @@ const projects = [
     id: "empatia",
     title: "EMPATIA",
     badge: "HealthTech &middot; AI",
-    accent: "#ff00ff",
+    accent: "var(--spectral-magenta)",
     descriptionKey: "projects.empatia.description",
     features: ["projects.empatia.features.1", "projects.empatia.features.2"],
     stack: ["Python", "TensorFlow", "OpenCV", "DICOM", "Flask", "AWS S3"],
@@ -55,10 +55,10 @@ function ProjectModal({ project, isOpen, onClose }: { project: (typeof projects)
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-[#0a0a0a]/90 backdrop-blur-2xl rounded-2xl p-8 md:p-10 border border-white/10"
+            className="glass-spectral relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl p-8 md:p-10"
             onClick={(e) => e.stopPropagation()}
           >
-            <button onClick={onClose} className="absolute top-5 right-5 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors">
+            <button onClick={onClose} className="glitch-hover absolute top-5 right-5 p-2 rounded-full text-white/50 hover:text-white hover:bg-white/10 transition-colors" data-text="X">
               <X className="w-5 h-5" />
             </button>
 
@@ -114,19 +114,25 @@ export function ProjectsSection() {
   const { ref, isInView } = useInView({ threshold: 0.1 })
   const { t } = useLanguage()
 
+  useEffect(() => {
+    document.body.style.overflow = isModalOpen ? "hidden" : ""
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isModalOpen])
+
   const openModal = (project: (typeof projects)[0]) => {
     setSelectedProject(project)
     setIsModalOpen(true)
-    document.body.style.overflow = "hidden"
   }
 
   const closeModal = () => {
     setIsModalOpen(false)
-    document.body.style.overflow = ""
   }
 
   return (
-    <section id="proyectos" className="relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="proyectos" className="section-fog relative py-32 md:py-40 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -152,11 +158,12 @@ export function ProjectsSection() {
               <div className={`${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
                 <button onClick={() => openModal(project)} className="w-full text-left group cursor-pointer">
                   <div 
-                    className="h-72 md:h-96 rounded-2xl bg-gradient-to-br from-[#1a1a2e] to-[#0a0a0a] border border-white/10 p-8 flex flex-col justify-between transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_40px_rgba(124,58,237,0.15)] relative overflow-hidden"
+                    className="spectral-card spectral-distort glitch-sweep h-72 md:h-96 rounded-2xl p-8 flex flex-col justify-between transition-all duration-500 hover:border-white/20 hover:shadow-[0_0_48px_rgba(0,245,255,0.12)] relative overflow-hidden"
                   >
                     {/* Abstract visual representation */}
-                    <div className="absolute inset-0 opacity-30">
+                    <div className="absolute inset-0 opacity-35">
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full blur-3xl" style={{ backgroundColor: project.accent }} />
+                      <div className="absolute -left-20 top-10 h-24 w-[140%] rotate-[-18deg] bg-[linear-gradient(90deg,transparent,var(--spectral-blue),var(--spectral-cyan),var(--spectral-magenta),var(--accretion-orange),transparent)] opacity-20 blur-lg" />
                     </div>
                     <div className="relative z-10">
                       <span className="text-xs font-mono uppercase tracking-wider text-white/40">{project.id}</span>
@@ -193,7 +200,7 @@ export function ProjectsSection() {
                       </span>
                     ))}
                   </div>
-                  <button onClick={() => openModal(project)} className="inline-flex items-center gap-2 text-base font-medium text-[#00f5ff] hover:text-[#00f5ff]/80 transition-colors group">
+                  <button onClick={() => openModal(project)} className="glitch-hover inline-flex items-center gap-2 text-base font-medium text-[var(--spectral-cyan)] hover:text-[var(--hot-white)] transition-colors group" data-text={t("projects.viewDetails")}>
                     {t("projects.viewDetails")}
                     <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                   </button>

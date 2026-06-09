@@ -233,7 +233,7 @@ export const Magnetic = forwardRef<HTMLDivElement, MagneticProps>(
             <motion.div
                 ref={ref}
                 className={className}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1 + strength * 0.16 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 {...props}
