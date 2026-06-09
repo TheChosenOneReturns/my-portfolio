@@ -36,11 +36,11 @@ export function Navbar() {
           }`}
         >
           {/* Logo */}
-          <a href="#inicio" className="glitch-hover flex items-center gap-3 group z-50 rounded-full px-2 py-1" data-text="ABDEV">
+          <a href="#inicio" className="glitch-hover flex items-center gap-3 group z-50 rounded-full px-2 py-1">
             <div className="w-9 h-9 rounded-lg bg-[var(--spectral-violet)]/20 border border-[var(--spectral-magenta)]/40 flex items-center justify-center transition-all duration-300 group-hover:border-[var(--spectral-cyan)] group-hover:glow-violet">
               <span className="text-sm font-bold text-[var(--spectral-cyan)] tracking-tight">AB</span>
             </div>
-            <span className="text-base font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors">
+            <span className="glitch-text text-base font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors" data-text="ABDEV">
               ABDEV
             </span>
           </a>
@@ -56,10 +56,9 @@ export function Navbar() {
                     ? "bg-white/10 text-white shadow-[0_0_24px_rgba(0,245,255,0.14)]"
                     : "text-white/55 hover:text-white"
                 }`}
-                data-text={t(link.labelKey)}
                 aria-current={activeSection === link.id ? "page" : undefined}
               >
-                {t(link.labelKey)}
+                <span className="glitch-text" data-text={t(link.labelKey)}>{t(link.labelKey)}</span>
                 <span className={`absolute inset-x-3 bottom-1 h-px bg-[linear-gradient(90deg,var(--spectral-cyan),var(--spectral-magenta),var(--accretion-orange))] transition-all duration-300 ${activeSection === link.id ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
               </a>
             ))}
@@ -71,11 +70,10 @@ export function Navbar() {
               onClick={toggleLanguage}
               className="glitch-hover flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-sm font-medium text-white/60 hover:text-white transition-colors"
               aria-label="Toggle language"
-              data-text={`${language.toUpperCase()} MODE`}
             >
-              <span className={language === "es" ? "text-[var(--spectral-cyan)]" : ""}>ES</span>
+              <span className={`glitch-text ${language === "es" ? "text-[var(--spectral-cyan)]" : ""}`} data-text="ES">ES</span>
               <span className="text-white/30">/</span>
-              <span className={language === "en" ? "text-[var(--spectral-cyan)]" : ""}>EN</span>
+              <span className={`glitch-text ${language === "en" ? "text-[var(--spectral-cyan)]" : ""}`} data-text="EN">EN</span>
             </button>
 
             <a
@@ -83,9 +81,8 @@ export function Navbar() {
               className={`spectral-button glitch-hover text-base font-medium px-5 py-2.5 rounded-full transition-all duration-200 ${
                 activeSection === "contacto" ? "text-[var(--hot-white)] glow-cyan" : ""
               }`}
-              data-text={t("nav.contactar")}
             >
-              {t("nav.contactar")}
+              <span className="glitch-text" data-text={t("nav.contactar")}>{t("nav.contactar")}</span>
             </a>
           </div>
 
@@ -94,7 +91,6 @@ export function Navbar() {
             className="glitch-hover md:hidden rounded-full border border-[var(--spectral-cyan)]/45 bg-[var(--spectral-cyan)]/12 p-2 text-[var(--spectral-cyan)] shadow-[0_0_22px_rgba(0,245,255,0.18)] hover:text-[var(--hot-white)] hover:border-[var(--hot-white)]/60 transition-colors z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
-            data-text="MENU"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -123,9 +119,8 @@ export function Navbar() {
                     activeSection === link.id ? "text-[var(--hot-white)] text-glow" : "text-white/80 hover:text-[var(--spectral-cyan)]"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  data-text={t(link.labelKey)}
                 >
-                  {t(link.labelKey)}
+                  <span className="glitch-text" data-text={t(link.labelKey)}>{t(link.labelKey)}</span>
                 </motion.a>
               ))}
               <motion.button

@@ -10,14 +10,14 @@ export function SectionIndex() {
 
   return (
     <aside className="fixed left-3 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
-      <nav className="glass-spectral glitch-sweep relative overflow-hidden rounded-full px-3 py-4">
-        <div className="absolute left-[1.42rem] top-6 bottom-6 w-px bg-white/10" />
+      <nav className="relative px-2 py-4">
+        <div className="absolute left-[1.16rem] top-6 bottom-10 w-px bg-white/12" />
         <div
-          className="absolute left-[1.42rem] top-6 w-px bg-[linear-gradient(to_bottom,var(--spectral-cyan),var(--spectral-magenta),var(--accretion-orange))] shadow-[0_0_18px_var(--spectral-cyan)]"
-          style={{ height: `calc((100% - 3rem) * ${progress})` }}
+          className="absolute left-[1.16rem] top-6 w-px bg-[linear-gradient(to_bottom,var(--spectral-cyan),var(--spectral-magenta),var(--accretion-orange))] shadow-[0_0_18px_var(--spectral-cyan)]"
+          style={{ height: `calc((100% - 4rem) * ${progress})` }}
         />
 
-        <ol className="relative flex flex-col gap-2">
+        <ol className="relative flex flex-col gap-3">
           {portfolioSections.map((section, index) => {
             const isActive = section.id === activeSection
 
@@ -25,7 +25,7 @@ export function SectionIndex() {
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
-                  className="glitch-hover group flex items-center gap-3 rounded-full py-2 pl-1 pr-3"
+                  className="group flex items-center gap-3 py-1 pl-0 pr-2"
                   aria-current={isActive ? "true" : undefined}
                 >
                   <span
@@ -38,7 +38,7 @@ export function SectionIndex() {
                     {index + 1}
                   </span>
                   <span
-                    className={`max-w-0 overflow-hidden whitespace-nowrap text-xs font-mono uppercase tracking-[0.22em] transition-all duration-300 group-hover:max-w-28 ${
+                    className={`glitch-text max-w-0 overflow-hidden whitespace-nowrap text-xs font-mono uppercase tracking-[0.22em] transition-all duration-300 group-hover:max-w-28 ${
                       isActive ? "max-w-28 text-white text-glow" : "text-white/45"
                     }`}
                     data-text={t(section.labelKey)}
@@ -50,7 +50,7 @@ export function SectionIndex() {
             )
           })}
         </ol>
-        <span className="mt-3 block text-center text-[10px] font-mono text-white/25">
+        <span className="mt-4 block pl-9 text-[10px] font-mono text-white/25">
           {String(activeIndex + 1).padStart(2, "0")}
         </span>
       </nav>

@@ -11,11 +11,13 @@ import { ClientWrapper } from "@/components/client-wrapper"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { SectionDivider } from "@/components/section-divider"
 import { SectionIndex } from "@/components/section-index"
+import { GlitchSoundBridge } from "@/components/glitch-sound-bridge"
 
 export default function Home() {
   return (
     <SmoothScroll>
       <ClientWrapper>
+        <GlitchSoundBridge />
         <WebGLBackground />
         <main className="relative min-h-screen overflow-hidden">
           <Navbar />

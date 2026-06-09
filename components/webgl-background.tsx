@@ -123,12 +123,18 @@ const blackHoleFragmentShader = `
     float streakB = exp(-counter * 18.0) * smoothstep(0.32, 0.72, radius) * (1.0 - smoothstep(0.98, 1.16, radius));
     float chromaStreaks = (streakA * 0.22 + streakB * 0.12) * (0.4 + streakNoise);
 
-    float beamCore = exp(-pow(abs(uv.y) * 16.0, 1.18)) * smoothstep(0.18, 0.34, abs(uv.x)) * (1.0 - smoothstep(1.0, 1.23, abs(uv.x)));
-    float beamHalo = exp(-pow(abs(uv.y) * 5.2, 1.18)) * smoothstep(0.22, 0.48, abs(uv.x)) * (1.0 - smoothstep(1.04, 1.34, abs(uv.x)));
-    float beamPulse = 0.78 + 0.22 * sin(time * 4.5 + abs(uv.x) * 10.0 + turbulence * 2.5);
-    float beamEdge = smoothstep(0.24, 0.95, abs(uv.x));
-    vec3 beamColor = mix(vec3(1.0, 0.96, 0.72), prism(beamEdge + time * 0.14), 0.58);
-    beamColor = mix(beamColor, vec3(1.0, 0.18, 0.7), smoothstep(0.62, 1.0, abs(uv.x)) * 0.45);
+    float ringDrift = sin(time * 1.35) * 0.08;
+    float ringTilt = 0.42 + sin(time * 0.72) * 0.06;
+    vec2 movingRingUv = vec2(uv.x * 0.92, (uv.y - ringDrift * uv.x) * (3.4 + ringTilt));
+    float movingRingRadius = length(movingRingUv);
+    float movingRingAngle = atan(movingRingUv.y, movingRingUv.x);
+    float ringBand = exp(-pow((movingRingRadius - 0.64) * 21.0, 2.0));
+    float ringCore = exp(-pow(abs(movingRingUv.y) * 11.0, 1.2)) * smoothstep(0.3, 0.55, abs(movingRingUv.x)) * (1.0 - smoothstep(1.55, 1.95, abs(movingRingUv.x)));
+    float ringEnergy = max(ringBand * 0.85, ringCore);
+    ringEnergy *= 0.78 + 0.22 * sin(movingRingAngle * 5.0 + time * 6.2 + turbulence * 2.2);
+    float ringOcclusion = smoothstep(0.2, 0.34, radius);
+    vec3 movingRingColor = mix(vec3(1.0, 0.94, 0.68), prism(movingRingAngle * 0.12 + movingRingRadius * 0.44 + time * 0.22), 0.72);
+    movingRingColor = mix(movingRingColor, vec3(1.0, 0.22, 0.08), smoothstep(0.2, 0.9, cos(movingRingAngle - 0.25)) * 0.32);
 
     vec3 color = vec3(0.0);
     color += vec3(0.02, 0.13, 0.24) * fog;
@@ -140,14 +146,14 @@ const blackHoleFragmentShader = `
     color += vec3(0.38, 0.76, 1.0) * lensMask * 0.46;
     color += vec3(0.7, 0.95, 1.0) * microStars;
     color += prism(angle * 0.08 + radius * 0.55 + time * 0.18) * chromaStreaks * 1.35;
-    color += beamColor * beamCore * beamPulse * 2.2;
-    color += mix(vec3(0.0, 0.86, 1.0), vec3(1.0, 0.18, 0.78), beamEdge) * beamHalo * 0.72;
+    color += movingRingColor * ringEnergy * ringOcclusion * 2.2;
+    color += vec3(0.0, 0.86, 1.0) * ringBand * 0.42;
 
     color = mix(color, vec3(0.0), eventHorizon);
     color *= uIntensity;
 
-    float alpha = clamp(length(color) * 1.45 + fog * 0.42 + photonRing * 0.4 + beamHalo * 0.34, 0.0, 1.0);
-    alpha *= 1.0 - smoothstep(0.93, 1.14, radius);
+    float alpha = clamp(length(color) * 1.34 + fog * 0.42 + photonRing * 0.4 + ringEnergy * 0.42, 0.0, 1.0);
+    alpha *= 1.0 - smoothstep(1.48, 1.92, radius);
 
     gl_FragColor = vec4(color, alpha);
   }
@@ -196,8 +202,8 @@ function RealisticBlackHole() {
   })
 
   return (
-    <mesh position={[isNarrow ? 1.02 : 0.38, isNarrow ? 0.08 : 0, 0]} scale={isNarrow ? 1.02 : 1.26}>
-      <planeGeometry args={[2.15, 2.15]} />
+    <mesh position={[isNarrow ? 0.98 : 0.32, isNarrow ? 0.08 : 0, 0]} scale={isNarrow ? 1.72 : 2.2}>
+      <planeGeometry args={[2.45, 2.45]} />
       <shaderMaterial
         ref={materialRef}
         vertexShader={blackHoleVertexShader}
@@ -321,7 +327,7 @@ export function WebGLBackground() {
   if (!shouldRender) {
     return (
       <div
-        className="fixed inset-0 w-full h-full bg-[linear-gradient(90deg,transparent_33%,rgba(0,245,255,0.16)_45%,rgba(255,247,220,0.22)_50%,rgba(255,43,214,0.14)_58%,transparent_68%),radial-gradient(circle_at_58%_44%,rgba(0,245,255,0.12),transparent_26%),radial-gradient(circle_at_60%_45%,rgba(255,43,214,0.12),transparent_34%),#000]"
+        className="fixed inset-0 w-full h-full bg-[radial-gradient(ellipse_at_58%_44%,rgba(255,247,220,0.18),transparent_11%),radial-gradient(ellipse_at_58%_44%,rgba(0,245,255,0.14),transparent_34%),radial-gradient(ellipse_at_62%_45%,rgba(255,43,214,0.12),transparent_46%),#000]"
         style={{ zIndex: 0 }}
       />
     )

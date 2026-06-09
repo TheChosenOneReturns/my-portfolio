@@ -8,6 +8,7 @@ interface SoundContextType {
     toggleSound: () => void
     playClick: () => void
     playHover: () => void
+    playGlitch: () => void
     playWhoosh: () => void
     playToggle: (isOn: boolean) => void
     playSuccess: () => void
@@ -38,6 +39,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
     const playClick = () => retroSound.playClick()
     const playHover = () => retroSound.playHover()
+    const playGlitch = () => retroSound.playGlitch()
     const playWhoosh = () => retroSound.playWhoosh()
     const playToggle = (isOn: boolean) => retroSound.playToggle(isOn)
     const playSuccess = () => retroSound.playSuccess()
@@ -48,6 +50,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
             toggleSound,
             playClick,
             playHover,
+            playGlitch,
             playWhoosh,
             playToggle,
             playSuccess
@@ -66,6 +69,7 @@ export function useSound() {
             toggleSound: () => { },
             playClick: () => { },
             playHover: () => { },
+            playGlitch: () => { },
             playWhoosh: () => { },
             playToggle: () => { },
             playSuccess: () => { }

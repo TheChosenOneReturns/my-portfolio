@@ -355,6 +355,52 @@ class RetroSoundGenerator {
         sub.stop(ctx.currentTime + 0.05)
     }
 
+    // Glitch hover - short digital crackle with spectral ticks
+    playGlitch() {
+        if (!this.enabled) return
+        const ctx = this.getContext()
+        const duration = 0.09
+        const bufferSize = Math.floor(ctx.sampleRate * duration)
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate)
+        const data = buffer.getChannelData(0)
+
+        for (let i = 0; i < bufferSize; i++) {
+            const t = i / bufferSize
+            const gate = Math.sin(t * Math.PI * 18) > 0.45 ? 1 : 0.18
+            data[i] = (Math.random() * 2 - 1) * gate * Math.pow(1 - t, 1.8)
+        }
+
+        const noise = ctx.createBufferSource()
+        const filter = ctx.createBiquadFilter()
+        const gain = ctx.createGain()
+
+        noise.buffer = buffer
+        filter.type = "bandpass"
+        filter.Q.value = 10
+        filter.frequency.setValueAtTime(1800, ctx.currentTime)
+        filter.frequency.exponentialRampToValueAtTime(5200, ctx.currentTime + duration)
+
+        noise.connect(filter)
+        filter.connect(gain)
+        gain.connect(this.masterGain!)
+
+        gain.gain.setValueAtTime(0.055, ctx.currentTime)
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration)
+        noise.start(ctx.currentTime)
+
+        const tick = ctx.createOscillator()
+        const tickGain = ctx.createGain()
+        tick.connect(tickGain)
+        tickGain.connect(this.masterGain!)
+        tick.type = "square"
+        tick.frequency.setValueAtTime(2600, ctx.currentTime)
+        tick.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + 0.045)
+        tickGain.gain.setValueAtTime(0.026, ctx.currentTime)
+        tickGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.055)
+        tick.start(ctx.currentTime)
+        tick.stop(ctx.currentTime + 0.055)
+    }
+
     // Navigation whoosh - Warp drive transition
     playWhoosh() {
         if (!this.enabled) return

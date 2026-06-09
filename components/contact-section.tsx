@@ -49,7 +49,6 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="glitch-hover p-4 rounded-full bg-white/[0.035] border border-white/10 text-white/55 transition-all duration-300 hover:text-[var(--hot-white)] hover:border-[var(--spectral-cyan)]/45 hover:bg-[var(--spectral-cyan)]/10 hover:shadow-[0_0_30px_rgba(0,245,255,0.18)]"
                 aria-label={link.name}
-                data-text={link.name}
               >
                 {link.icon ? (
                   <link.icon className="w-6 h-6" />
@@ -67,10 +66,9 @@ export function ContactSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="spectral-button glitch-hover inline-flex items-center gap-3 px-8 py-4 rounded-full transition-all duration-300 text-lg font-medium"
-            data-text={t("contact.sendMessage")}
           >
             <MessageCircle className="w-5 h-5" />
-            {t("contact.sendMessage")}
+            <span className="glitch-text" data-text={t("contact.sendMessage")}>{t("contact.sendMessage")}</span>
           </a>
         </motion.div>
       </div>
